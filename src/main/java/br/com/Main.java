@@ -3,23 +3,25 @@ package br.com;
 import br.com.enums.TipoContato;
 import br.com.model.Contato;
 import br.com.ui.BasicUI;
+import br.com.ui.PagedListUI;
 
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
-        BasicUI ui = new BasicUI("Agenda de Contatos");
-        ui.show();
+        Agenda agenda = new Agenda();
 
-//        Agenda agenda = new Agenda();
-//        for (int i = 0; i < 10; i++) {
-//            Contato contato = new Contato();
-//            contato.setTipoContato(TipoContato.PESSOAL);
-//            contato.setNome("Nome " + i);
-//            contato.setSobrenome("Teste");
-//            agenda.adicionarContato(contato);
-//        }
+        for (int i = 0; i < 10; i++) {
+            Contato contato = new Contato();
+            contato.setTipoContato(TipoContato.PESSOAL);
+            contato.setNome("Nome " + i);
+            contato.setSobrenome("Teste");
+            agenda.adicionarContato(contato);
+        }
+
+        BasicUI ui = new PagedListUI("Agenda de Contatos", agenda);
+        ui.show();
 //
 //        System.out.println("Pagina 1");
 //        List<Contato> pagina1 = agenda.listarContatos(1, 4);

@@ -5,14 +5,15 @@ import br.com.model.Contato;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Agenda {
+public class Agenda implements br.com.ui.PagedList {
     private List<Contato> contatos;
 
     public Agenda() { // Construtor
         contatos = new ArrayList<>();
     }
 
-    List<Contato> listarContatos(int pagina, int tamanhoPagina) {
+    @Override
+    public List<Contato> listarContatos(int pagina, int tamanhoPagina) {
         List<Contato> listagem = new ArrayList<>();
         int primeiroRegistro = tamanhoPagina * (pagina -1);
         if (primeiroRegistro > contatos.size() -1) {
