@@ -1,8 +1,10 @@
 package br.com.ui;
 
 import br.com.Agenda;
+import br.com.model.Contato;
 import br.com.util.ConsoleUIHelper;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,8 @@ public class PagedListUI extends BasicUI {
     protected final int PAGE_SIZE;
     protected int curPage;
     protected PagedList pageSource;
+    private List<Contato> dataList;
+
     public PagedListUI(String titulo, PagedList pageSource) {
 
         this(DEFAULT_COLUMNS, DEFAULT_ROWS, titulo, pageSource);
@@ -25,8 +29,14 @@ public class PagedListUI extends BasicUI {
 
     @Override
     public int drawContent() {
-        List dataList = pageSource.listarContatos(curPage, PAGE_SIZE);
-        dataList.forEach(System.out::println);
+        dataList = pageSource.listarContatos(curPage, PAGE_SIZE);
+        for (int i = 0; i < dataList.size(); i++) {
+            Contato contato = dataList.get(i);
+            ConsoleUIHelper.drawWithRightPadding(i + " -> " + contato.toString(), colunas, ' '); // Imprime a lista de contatos(dataList) na tela
+        }
+
+
+//        dataList.forEach(System.out::println);
         return 0;
     }
 
@@ -70,7 +80,15 @@ public class PagedListUI extends BasicUI {
         return true;
     }
 
-    private void seeItem() { // Ver item
+    private void seeItem() {
+        // Ver item
+        int op = ConsoleUIHelper.askNumber("Informe o item a exibir").intValue();
+        if(op >= 0 && op < dataList.size()) {
+            System.out.println(dataList.get(op));
+        } else {
+            ConsoleUIHelper.showMessageAndWait("Item inválido, por favor informe um item válido!", 10);
+            ConsoleUIHelper.clearScreen();
+        }
     }
 
     private void addItem() { // Adicionar item
