@@ -6,6 +6,7 @@ target/
 ### IntelliJ IDEA ###
 /test/
 /resources/
+/META-INF/
 /out/
 .idea/
 .idea/modules.xml
