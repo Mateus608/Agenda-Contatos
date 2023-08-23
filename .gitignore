@@ -7,6 +7,7 @@ target/
 /test/
 /resources/
 /META-INF/
+*.MF
 /out/
 .idea/
 .idea/modules.xml
