@@ -12,7 +12,7 @@ public class EnderecoUI extends EditItemUI<Endereco> {
     public EnderecoUI(String titulo, Endereco item, EditItemCallback<Endereco> editItemCallback) {
         super(titulo, item, editItemCallback);
     }
-
+    @Override
     public int drawItemDetails() {
         ConsoleUIHelper.drawWithRightPadding("Tipo: " + item.getTipoEndereco().name(), colunas, ' ');
         ConsoleUIHelper.drawWithRightPadding("Pais: " + item.getPais(), colunas, ' ');
@@ -23,11 +23,11 @@ public class EnderecoUI extends EditItemUI<Endereco> {
         ConsoleUIHelper.drawWithRightPadding("Complemento: " + item.getComplemento(), colunas, ' ');
         return 7;
     }
-
+    @Override
     public String[] fillFieldsNames() {
         return new String[]{"Sair","Tipo","Pais","Logradouro","Bairro","Cidade","Estado","Complemento"};
     }
-
+    @Override
     public void fillField(Endereco item, int option) {
         switch (option) {
             case 0:
@@ -53,7 +53,7 @@ public class EnderecoUI extends EditItemUI<Endereco> {
                 break;
         }
     }
-
+    @Override
     protected void newItem() {
         Endereco newItem = new Endereco();
         newItem.setTipoEndereco(TipoEndereco.RESIDENCIAL);

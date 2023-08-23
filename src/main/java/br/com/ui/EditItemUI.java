@@ -16,7 +16,7 @@ public abstract class EditItemUI<T> extends BasicUI {
 
     @Override
     public int drawContent() {
-        return drawItemDetails();
+        return  drawItemDetails();
     }
 
     @Override
